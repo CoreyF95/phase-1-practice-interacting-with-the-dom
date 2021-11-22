@@ -76,11 +76,10 @@ pause.addEventListener("click", () => {
 
 heart.addEventListener("click", () => {
     if (likes.children[likes.children.length - 1] !== undefined) {
-        likes.children[likes.children.length - 1].textContent = `${seconds} has been liked ${heartClicks} times`
+        likes.children[likes.children.length - 1].textContent = `${seconds} has been liked ${heartClicks} times`;
     } else {
         let like = document.createElement("li");
         like.textContent = `${seconds} has been liked ${heartClicks} times`
         likes.appendChild(like);
     }
-        // APPENDS EVERY CLICK
 })
