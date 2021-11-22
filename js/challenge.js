@@ -29,7 +29,7 @@ const timeElapsed = setInterval(timer, 1000);
 
 
 
-let heartCounter = 
+let heartCounter =
     heart.addEventListener("click", () => {
         return heartClicks += 1;
     });
@@ -52,34 +52,35 @@ submit.addEventListener("click", (e) => {
     document.getElementById("list").appendChild(newComment);
     newComment.textContent = comment.value;
     comment.value = "";
-    
+
 
 })
 
 pause.addEventListener("click", () => {
-    if (pause.textContent === "pause") {
-        pause.textContent = "resume";
-        plus.disabled = true;
-        minus.disabled = true;
-        heart.disabled = true;
-        submit.disabled = true;
-        counter.textContent = seconds.valueOf();
-    } else {
+    if (pause.textContent === "resume") {
         pause.textContent = "pause";
         plus.disabled = false;
         minus.disabled = false;
         heart.disabled = false;
         submit.disabled = false;
         timer();
+    } else {
+        pause.textContent = "resume";
+        plus.disabled = true;
+        minus.disabled = true;
+        heart.disabled = true;
+        submit.disabled = true;
+        counter.textContent = seconds.valueOf();
     }
-
-    // TAKES 2 CLICKS TO START WORKING
 })
 
 heart.addEventListener("click", () => {
-    let like = document.createElement("li");
-    likes.appendChild(like);
-    like.textContent = `${seconds} has been liked ${heartClicks} times`;
-
-    // APPENDS EVERY CLICK
+    if (likes.children[likes.children.length - 1] !== undefined) {
+        likes.children[likes.children.length - 1].textContent = `${seconds} has been liked ${heartClicks} times`
+    } else {
+        let like = document.createElement("li");
+        like.textContent = `${seconds} has been liked ${heartClicks} times`
+        likes.appendChild(like);
+    }
+        // APPENDS EVERY CLICK
 })
