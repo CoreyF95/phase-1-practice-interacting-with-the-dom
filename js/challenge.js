@@ -75,10 +75,13 @@ pause.addEventListener("click", () => {
 })
 
 heart.addEventListener("click", () => {
-    if (likes.children[likes.children.length - 1] !== undefined) {
-        likes.children[likes.children.length - 1].textContent = `${seconds} has been liked ${heartClicks} times`;
+    if (document.getElementById(seconds)) {
+        let li = (document.getElementById(seconds))
+        li.textContent = `${seconds} has been liked ${++li.dataset.likecount} times`
     } else {
         let like = document.createElement("li");
+        like.id = seconds;
+        like.dataset.likecount = 1;
         like.textContent = `${seconds} has been liked ${heartClicks} times`
         likes.appendChild(like);
     }
